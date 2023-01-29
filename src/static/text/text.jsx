@@ -229,13 +229,6 @@ export const afectadoJSON = {
     value: "affObj.id_number",
     onChange: "setAffObj({ ...affObj, id_number: e.target.value });",
   },
-  age: {
-    tag: "text",
-    placeholder: "edad afectado",
-    type: "number",
-    value: "affObj.age",
-    onChange: "setAffObj({ ...affObj, age: e.target.value });",
-  },
   pather_name: {
     tag: "text",
     placeholder: "nombre del padre",
