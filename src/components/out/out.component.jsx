@@ -7,15 +7,25 @@ import OutInputComponent from "./out.input.component.jsx";
 import {
   description,
   peticionario,
+  afectado,
+  demandado,
   peticionarioJSON,
   afectadoJSON,
+  demandadoJSON,
 } from "../../static/text/text.jsx";
 
+import {FaClipboard} from "react-icons/fa";
+
 function OutComponent() {
-  const [descRegText, setDescRegText] = useState("regText");
-  const [affRegText, setAffRegText] = useState("regText");
-  const [demRegText, setDemRegText] = useState("regText");
-  const [petRegText, setPetRegText] = useState("regText");
+  const [affRegText, setAffRegText] = useState("");
+  const [demRegText, setDemRegText] = useState("");
+  const [petRegText, setPetRegText] = useState("");
+  const [descRegText, setDescRegText] = useState("");
+
+  const [afftrigger, setAffTrigger] = useState(false);
+  const [demtrigger, setDemTrigger] = useState(false);
+  const [pettrigger, setPetTrigger] = useState(false);
+  const [desctrigger, setDescTrigger] = useState(false);
 
   const [affObj, setAffObj] = useState({
     name: "",
@@ -64,28 +74,83 @@ function OutComponent() {
 
   useEffect(() => {
     console.log(petObj);
-  }, [petObj])
+  }, [petObj]);
 
   return (
     <div className="out">
       <div id="first-row">
         <div className="out__description__container">
+          <div
+            className="copy-button"
+            onClick={() => setDescTrigger(!desctrigger)}
+          >
+            <FaClipboard></FaClipboard>
+          </div>
           <OutInputComponent
             description={description}
             peticionarioJSON={peticionarioJSON}
             afectadoJSON={afectadoJSON}
+            demandadoJSON={demandadoJSON}
             affObj={affObj}
             demObj={demObj}
             petObj={petObj}
             setAffObj={setAffObj}
             setDemObj={setDemObj}
             setPetObj={setPetObj}
+            setDescRegText={setDescRegText}
+            trigger={desctrigger}
           />
         </div>
       </div>
       <div id="second-row">
         <div className="out__input__container">
-        <OutInputComponent
+          <div
+            className="copy-button"
+            onClick={() => setAffTrigger(!afftrigger)}
+          >
+            <FaClipboard></FaClipboard>
+          </div>
+          <OutInputComponent
+            description={afectado}
+            peticionarioJSON={peticionarioJSON}
+            afectadoJSON={afectadoJSON}
+            demandadoJSON={demandadoJSON}
+            affObj={affObj}
+            demObj={demObj}
+            petObj={petObj}
+            setAffObj={setAffObj}
+            setDemObj={setDemObj}
+            setPetObj={setPetObj}
+            setAffRegText={setAffRegText}
+            trigger={afftrigger}
+          />
+        </div>
+        <div className="out__input__container">
+          <div className="copy-button"
+          onClick={() => setDemTrigger(!demtrigger)}
+          ></div>
+          <OutInputComponent
+            description={demandado}
+            peticionarioJSON={peticionarioJSON}
+            afectadoJSON={afectadoJSON}
+            demandadoJSON={demandadoJSON}
+            affObj={affObj}
+            demObj={demObj}
+            petObj={petObj}
+            setAffObj={setAffObj}
+            setDemObj={setDemObj}
+            setPetObj={setPetObj}
+            setDemRegText={setDemRegText}
+            trigger={demtrigger}
+          />
+        </div>
+        <div className="out__input__container">
+          <div className="copy-button"
+          onClick={() => setPetTrigger(!pettrigger)}
+          >
+            <FaClipboard></FaClipboard>
+          </div>
+          <OutInputComponent
             description={peticionario}
             peticionarioJSON={peticionarioJSON}
             afectadoJSON={afectadoJSON}
@@ -95,13 +160,9 @@ function OutComponent() {
             setAffObj={setAffObj}
             setDemObj={setDemObj}
             setPetObj={setPetObj}
+            setPetRegText={setPetRegText}
+            trigger={pettrigger}
           />
-        </div>
-        <div className="out__input__container">
-          {/* <input type="textarea" className="out__input" disabled /> */}
-        </div>
-        <div className="out__input__container">
-          {/* <input type="textarea" className="out__input" disabled /> */}
         </div>
       </div>
     </div>

@@ -7,12 +7,14 @@ function OutInputComponent({
   description,
   peticionarioJSON,
   afectadoJSON,
+  demandadoJSON,
   affObj,
   demObj,
   petObj,
   setAffObj,
   setDemObj,
   setPetObj,
+  trigger,
 }) {
   const componentGenerator = (tokens) => {
     const tags = {
@@ -52,9 +54,10 @@ function OutInputComponent({
             onChange={eval(obj.onChange)}
             key={obj.key}
           >
+            <option>-- {obj.placeholder} --</option>
             {obj.options.map((option, i) => {
               return (
-                <option key={i} value={option}>
+                <option key={i + 1} value={option}>
                   {option}
                 </option>
               );
@@ -71,7 +74,7 @@ function OutInputComponent({
         const obj = eval(token.value);
         obj.key = i;
         return tags[obj.tag](obj);
-      } else if (token.type === "breakline") return (<span/>);
+      } else if (token.type === "breakline") return <span />;
       else {
         if (token.value !== "" && token.value !== undefined)
           return <p key={i}>{token.value}</p>;
@@ -80,6 +83,28 @@ function OutInputComponent({
 
     return components;
   };
+
+  const textGenerator = (tokens) => {
+    let text = "";
+
+    tokens.forEach((token) => {
+      if (token.type === "variable") {
+        text += eval(eval(token.value).value);
+      } else if (token.type === "breakline") text += "\n";
+      else if (token.value !== "" && token.value !== undefined)
+        text += token.value;
+    });
+
+    console.log(text);
+
+    return text;
+  };
+
+  useEffect(() => {
+    const text = textGenerator(replaceTest(description));
+    navigator.clipboard.writeText(text);
+    console.log(text);
+  }, [trigger]);
 
   const replaceTest = (input) => {
     var tokens = [];

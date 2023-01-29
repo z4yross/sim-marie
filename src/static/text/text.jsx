@@ -1,23 +1,94 @@
 // multiline string
 
-export const description = "Se comunica {{peticionarioJSON.pronoun}} \
-  {{peticionarioJSON.name}} con {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} \
-  en calidad de {{peticionarioJSON.relacion}} del menor {{afectadoJSON.name}} con \
-  {{afectadoJSON.age}} años de edad, con {{afectadoJSON.id_type}} {{afectadoJSON.id_number}}, {{afectadoJSON.description}}. \n\
-  Brinda datos de ubicaciond del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.";
+export const description =
+  "Se comunica {{peticionarioJSON.pronoun}} \
+{{peticionarioJSON.name}} con {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} \
+en calidad de {{peticionarioJSON.relacion}} del menor {{afectadoJSON.name}} con \
+{{afectadoJSON.age}} años de edad, con {{afectadoJSON.id_type}} {{afectadoJSON.id_number}}, {{afectadoJSON.description}}.\n\
+Brinda datos de ubicaciond del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.";
 
-export const peticionario = " PETICIONARIO: \n\
-  Nombre completo: {{peticionarioJSON.name}} \n\
-  Documento de identidad: {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} \n\
-  Fecha de nacimiento: {{peticionarioJSON.birthdate}} \n\
-  Telefono: {{peticionarioJSON.phone}} \n\
-  Celular: {{peticionarioJSON.cellphone}} \n\
-  Correo electronico: {{peticionarioJSON.email}} \n\
-  ¿Ha sido víctima del conflicto armado? {{peticionarioJSON.vca}} \n\
-  ¿Ha sido desplazado por la violencia? {{peticionarioJSON.dv}} \n\
-  ¿Pertenece a algún grupo étnico? {{peticionarioJSON.etnicity}} \n\
-  ¿Presenta algún tipo de discapacidad? {{peticionarioJSON.disability}} \n\
-";
+export const peticionario =
+  "PETICIONARIO: \n\
+Nombre completo: {{peticionarioJSON.name}} \n\
+Documento de identidad: {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} \n\
+Fecha de nacimiento: {{peticionarioJSON.birthdate}} \n\
+Telefono: {{peticionarioJSON.phone}} \n\
+Celular: {{peticionarioJSON.cellphone}} \n\
+Correo electronico: {{peticionarioJSON.email}} \n\
+¿Ha sido víctima del conflicto armado? {{peticionarioJSON.vca}} \n\
+¿Ha sido desplazado por la violencia? {{peticionarioJSON.dv}} \n\
+¿Pertenece a algún grupo étnico? {{peticionarioJSON.etnicity}} \n\
+¿Presenta algún tipo de discapacidad? {{peticionarioJSON.disability}}";
+
+export const afectado =
+  "AFECTADO: \n\
+Nombre completo: {{afectadoJSON.name}} \n\
+Documento de identidad: {{afectadoJSON.id_type}} No. {{afectadoJSON.id_number}} \n\
+Edad: {{afectadoJSON.age}} \n\
+Telefono: {{afectadoJSON.phone}} \n\
+Celular: {{afectadoJSON.cellphone}} \n\
+Direccion: {{afectadoJSON.address}}";
+
+export const demandado =
+  "DEMANDADO: \n\
+Nombre completo: {{demandadoJSON.name}} \n\
+Documento de identidad: {{demandadoJSON.id_type}} No. {{demandadoJSON.id_number}} \n\
+Edad: {{demandadoJSON.age}} \n\
+Telefono: {{demandadoJSON.phone}} \n\
+Celular: {{demandadoJSON.cellphone}} \n\
+Direccion: {{demandadoJSON.address}}";
+
+export const demandadoJSON = {
+  name: {
+    tag: "text",
+    placeholder: "Nombre completo",
+    type: "text",
+    value: "demObj.name",
+    onChange: "setDemObj({ ...demObj, name: e.target.value });",
+  },
+  id_type: {
+    tag: "select",
+    placeholder: "Tipo de documento",
+    options: ["cedula de ciudadania"],
+    value: "demObj.id_type",
+    onChange: "(e) => {setDemObj({ ...demObj, id_type: e.target.value });}",
+  },
+  id_number: {
+    tag: "text",
+    placeholder: "No documento",
+    type: "text",
+    value: "demObj.id_number",
+    onChange: "setDemObj({ ...demObj, id_number: e.target.value });",
+  },
+  age: {
+    tag: "text",
+    placeholder: "Edad",
+    type: "number",
+    value: "demObj.age",
+    onChange: "setDemObj({ ...demObj, age: e.target.value });",
+  },
+  phone: {
+    tag: "text",
+    placeholder: "Telefono",
+    type: "text",
+    value: "demObj.phone",
+    onChange: "setDemObj({ ...demObj, phone: e.target.value });",
+  },
+  cellphone: {
+    tag: "text",
+    placeholder: "Celular",
+    type: "text",
+    value: "demObj.cellphone",
+    onChange: "setDemObj({ ...demObj, cellphone: e.target.value });",
+  },
+  address: {
+    tag: "text",
+    placeholder: "Direccion",
+    type: "text",
+    value: "demObj.address",
+    onChange: "setDemObj({ ...demObj, address: e.target.value });",
+  },
+};
 
 export const peticionarioJSON = {
   pronoun: {
@@ -25,7 +96,7 @@ export const peticionarioJSON = {
     placeholder: "pronombre",
     options: ["el señor", "la señora"],
     value: "petObj.sex",
-    onChange: '(e) => {setPetObj({ ...petObj, sexo: e.target.value === "el señor" ? "M" : "F" });}',
+    onChange: "(e) => {setPetObj({ ...petObj, sex: e.target.value});}",
   },
   id_type: {
     tag: "select",
@@ -63,7 +134,7 @@ export const peticionarioJSON = {
       "persona juridica",
     ],
     value: "petObj.relationship",
-    onChange: "(e) => { setPetObj({ ...petObj, relacion: e.target.value });}",
+    onChange: "(e) => { setPetObj({ ...petObj, relationship: e.target.value });}",
   },
   birthdate: {
     tag: "text",
@@ -120,7 +191,7 @@ export const peticionarioJSON = {
     type: "text",
     value: "petObj.disability",
     onChange: "setPetObj({ ...petObj, disability: e.target.value });",
-  }
+  },
 };
 
 export const afectadoJSON = {
@@ -157,6 +228,41 @@ export const afectadoJSON = {
     type: "text",
     value: "affObj.id_number",
     onChange: "setAffObj({ ...affObj, id_number: e.target.value });",
+  },
+  age: {
+    tag: "text",
+    placeholder: "edad afectado",
+    type: "number",
+    value: "affObj.age",
+    onChange: "setAffObj({ ...affObj, age: e.target.value });",
+  },
+  pather_name: {
+    tag: "text",
+    placeholder: "nombre del padre",
+    type: "text",
+    value: "affObj.pather_name",
+    onChange: "setAffObj({ ...affObj, pather_name: e.target.value });",
+  },
+  mother_name: {
+    tag: "text",
+    placeholder: "nombre de la madre",
+    type: "text",
+    value: "affObj.mother_name",
+    onChange: "setAffObj({ ...affObj, mother_name: e.target.value });",
+  },
+  phone: {
+    tag: "text",
+    placeholder: "telefono afectado",
+    type: "text",
+    value: "affObj.phone",
+    onChange: "setAffObj({ ...affObj, phone: e.target.value });",
+  },
+  cellphone: {
+    tag: "text",
+    placeholder: "celular afectado",
+    type: "text",
+    value: "affObj.cellphone",
+    onChange: "setAffObj({ ...affObj, cellphone: e.target.value });",
   },
   address: {
     tag: "text",
