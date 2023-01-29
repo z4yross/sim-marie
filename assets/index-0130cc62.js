@@ -69,7 +69,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `:token.value!==""&&token.value!==void 0&&(text+=token.value)}),console.log(text),text};reactExports.useEffect(()=>{const o=textGenerator(replaceTest(description));navigator.clipboard.writeText(o),console.log(o)},[trigger]);const replaceTest=o=>{for(var a=[],c="",d=!1,h,$=0;$<o.length;$++){var g=o.charAt($);if(g==="{"&&o.charAt($+1)==="{")c!==""&&(a.push({type:"text",value:c}),c=""),d=!0,h=$,$++;else if(g==="}"&&o.charAt($+1)==="}"){var _=o.slice(h,$+2);a.push({type:"variable",value:_}),c="",d=!1,$++}else g===`
 `?(c!==""&&(a.push({type:d?"variable":"text",value:c}),c=""),a.push({type:"breakline",value:`
 `})):c+=g}return c!==""&&a.push({type:d?"variable":"text",value:c}),a};return jsxRuntimeExports.jsx("div",{className:"out__text__container",children:componentGenerator(replaceTest(description))})}const description=`Se comunica {{peticionarioJSON.pronoun}} {{peticionarioJSON.name}} con {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} en calidad de {{peticionarioJSON.relacion}} del menor {{afectadoJSON.name}} con {{afectadoJSON.age}} años de edad, con {{afectadoJSON.id_type}} {{afectadoJSON.id_number}}, {{afectadoJSON.description}}.
-Brinda datos de ubicaciond del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.`,peticionario=`PETICIONARIO: 
+Brinda datos de ubicacion del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.`,peticionario=`PETICIONARIO: 
 Nombre completo: {{peticionarioJSON.name}} 
 Documento de identidad: {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} 
 Fecha de nacimiento: {{peticionarioJSON.birthdate}} 
