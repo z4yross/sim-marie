@@ -5,7 +5,7 @@ export const description =
 {{peticionarioJSON.name}} con {{peticionarioJSON.id_type}} No. {{peticionarioJSON.id_number}} \
 en calidad de {{peticionarioJSON.relacion}} del menor {{afectadoJSON.name}} con \
 {{afectadoJSON.age}} años de edad, con {{afectadoJSON.id_type}} {{afectadoJSON.id_number}}, {{afectadoJSON.description}}.\n\
-Brinda datos de ubicaciond del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.";
+Brinda datos de ubicacion del menor {{afectadoJSON.address}}. Por lo anterior se solicita pronta intervencion por parte del ICBF.";
 
 export const peticionario =
   "PETICIONARIO: \n\

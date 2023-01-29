@@ -14,7 +14,7 @@ import {
   demandadoJSON,
 } from "../../static/text/text.jsx";
 
-import {FaClipboard} from "react-icons/fa";
+import { FaClipboard } from "react-icons/fa";
 
 function OutComponent() {
   const [affRegText, setAffRegText] = useState("");
@@ -126,9 +126,12 @@ function OutComponent() {
           />
         </div>
         <div className="out__input__container">
-          <div className="copy-button"
-          onClick={() => setDemTrigger(!demtrigger)}
-          ></div>
+          <div
+            className="copy-button"
+            onClick={() => setDemTrigger(!demtrigger)}
+          >
+            <FaClipboard></FaClipboard>
+          </div>
           <OutInputComponent
             description={demandado}
             peticionarioJSON={peticionarioJSON}
@@ -145,8 +148,9 @@ function OutComponent() {
           />
         </div>
         <div className="out__input__container">
-          <div className="copy-button"
-          onClick={() => setPetTrigger(!pettrigger)}
+          <div
+            className="copy-button"
+            onClick={() => setPetTrigger(!pettrigger)}
           >
             <FaClipboard></FaClipboard>
           </div>
